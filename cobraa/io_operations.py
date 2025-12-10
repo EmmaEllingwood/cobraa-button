@@ -50,7 +50,8 @@ def generateMacros():
                     #print(macdir)
                     testCreateDirectory(macdir)
 
-                    generator,detectorvolume = macroGenerator(_loc,_element,_p,nruns)
+                    generator,detectorvolume = macroGenerator(_loc,_element,_p,nruns) 
+                    _element=_element.replace(" ","")
                     outfile = open("%s/phys_%s.mac"%(macdir,_element),"w+")
                     outfile.writelines(generator)
                     outfile.close
@@ -308,18 +309,27 @@ def generalMacroGenerator():
 /rat/db/set DAQ[SplitEVDAQ] trigger_threshold 1
 /rat/db/set DAQ[SplitEVDAQ] trigger_window 100
 """ 
-    if arguments['--detectMedia']=='doped_water' or arguments ['--detectMedia']=='wbls_gd_01pct_ly100_WM_0121':
+    if arguments['--detectMedia']=='doped_water':
         recon=f"""
-/rat/db/set BONSAI likelihoodFileName  "/models/bonsai/gd-water.bin"
-/rat/db/set BONSAI useCherenkovAngle 1
+/rat/db/set BONSAI likelihoodFileName  "/models/bonsai/like.bin.button.wgd"
+/rat/db/set BONSAI useCherenkovAngle 0
 ### NT (default N9) window [-3,6]
 /rat/db/set BONSAI nXmin -3.0
 /rat/db/set BONSAI nXmax 6.0
 /rat/db/set BONSAI mediaSpeedOfLight 21.8
     """
-    elif arguments['--detectMedia']=='WBLS':
+    elif arguments['--detectMedia']=='wbls_gd_01pct_ly100_WM_0121':
         recon=f"""
-/rat/db/set BONSAI likelihoodFileName  "/models/bonsai/wbls_button.bin"
+/rat/db/set BONSAI likelihoodFileName  "/models/bonsai/like.bin.button.wbls"
+/rat/db/set BONSAI useCherenkovAngle 0
+### NT (default N9) window [-3,6]
+/rat/db/set BONSAI nXmin -3.0
+/rat/db/set BONSAI nXmax 6.0
+/rat/db/set BONSAI mediaSpeedOfLight 20.5
+    """
+    elif arguments['--detectMedia']=='adams_scint':
+        recon=f"""
+/rat/db/set BONSAI likelihoodFileName  "/models/bonsai/like.bin.button.ls"
 /rat/db/set BONSAI useCherenkovAngle 0
 ### NT (default N9) window [-3,6]
 /rat/db/set BONSAI nXmin -3.0

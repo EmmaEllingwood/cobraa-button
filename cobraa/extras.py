@@ -217,7 +217,7 @@ def backgrounds():
             for _element in d[_p][_loc]:
                 _tag = "%s_%s_%s"%(_element,_loc,_p)
                 _tag = _tag.replace(" ","")
-                _file = "fred_root_files%s/merged_%s_%s_%s.root"%(additionalString,_element,_loc,_p)
+                _file = "reconstructed_root_files%s/merged_%s_%s_%s.root"%(additionalString,_element,_loc,_p)
                 _file = _file.replace(" ","")
                 if 'hartlepool' in _tag or 'heysham' in _tag or 'mono' in _tag or 'boulby' in _tag:
                     continue
