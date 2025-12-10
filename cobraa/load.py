@@ -299,6 +299,7 @@ def loadSimulationParameters():
                              'PMT':['234Pa','214Pb','214Bi','210Bi','210Tl'],\
                              'TANK':['234Pa','214Pb','214Bi','210Bi','210Tl'],\
                              'ROCK_2':['234Pa','214Pb','214Bi','210Bi','210Tl'],\
+                             'ROCK_1':['234Pa','214Pb','214Bi','210Bi','210Tl'],\
                              'IBEAM':['234Pa','214Pb','214Bi','210Bi','210Tl'],\
                              'PSUP':['234Pa','214Pb','214Bi','210Bi','210Tl'],\
                              'ENCAP':['234Pa','214Pb','214Bi','210Bi','210Tl'],\
@@ -308,6 +309,7 @@ def loadSimulationParameters():
                 'PMT':['228Ac','212Pb','212Bi','208Tl'],\
                 'TANK':['228Ac','212Pb','212Bi','208Tl'],\
                 'ROCK_2':['228Ac','212Pb','212Bi','208Tl'],\
+                'ROCK_1':['228Ac','212Pb','212Bi','208Tl'],\
                 'IBEAM':['228Ac','212Pb','212Bi','208Tl'],\
                 'PSUP':['228Ac','212Pb','212Bi','208Tl'],\
                 'ENCAP':['228Ac','212Pb','212Bi','208Tl'],\
@@ -320,6 +322,7 @@ def loadSimulationParameters():
                 'PSUP':['231Th','223Fr','211Pb','211Bi','207Tl'],\
                 'ENCAP':['231Th','223Fr','211Pb','211Bi','207Tl'],\
                 'ROCK_2':['231Th','223Fr','211Pb','211Bi','207Tl'],\
+                'ROCK_1':['231Th','223Fr','211Pb','211Bi','207Tl'],\
                 'LINER':['231Th','223Fr','211Pb','211Bi','207Tl']}
 
         d['40K_NA'] = {'LIQUID':['40K'],\
@@ -328,6 +331,7 @@ def loadSimulationParameters():
                 'PSUP':['40K'],\
                 'PMT':['40K'],\
                 'ROCK_2':['40K'],\
+                'ROCK_1':['40K'],\
                 'ENCAP':['40K'],\
                 'LINER':['40K']}
 
@@ -361,10 +365,10 @@ def loadSimulationParameters():
         # Define what components are associated with each physical process
         # (all processes included, some may not trigger a detector response)
         process = {
-        'CHAIN_238U_NA':['PMT','PSUP','IBEAM','TANK','ROCK_2','LIQUID','ENCAP','LINER'],\
-        'CHAIN_232Th_NA':['PMT','PSUP','IBEAM','TANK','ROCK_2','LIQUID','ENCAP','LINER'],\
-        'CHAIN_235U_NA':['TANK','PSUP','LIQUID','IBEAM','PMT','ROCK_2','ENCAP','LINER'],\
-        '40K_NA':['LIQUID','PMT','PSUP', 'IBEAM','TANK','ROCK_2','ENCAP','LINER'],\
+        'CHAIN_238U_NA':['PMT','PSUP','IBEAM','TANK','ROCK_2','ROCK_1','LIQUID','ENCAP','LINER'],\
+        'CHAIN_232Th_NA':['PMT','PSUP','IBEAM','TANK','ROCK_2','ROCK_1','LIQUID','ENCAP','LINER'],\
+        'CHAIN_235U_NA':['TANK','PSUP','LIQUID','IBEAM','PMT','ROCK_2','ROCK_1','ENCAP','LINER'],\
+        '40K_NA':['LIQUID','PMT','PSUP', 'IBEAM','TANK','ROCK_2','ROCK_1','ENCAP','LINER'],\
         '60Co_NA':['TANK','PSUP','IBEAM','PMT','ENCAP','LINER'],\
         '54Mn_NA':['PSUP','TANK','ENCAP'],\
         '137Cs_NA':['TANK','PSUP','IBEAM'],\
@@ -409,7 +413,8 @@ def loadSimulationParameters():
 '40K_IBEAM_40K_NA': [0, 50], \
 '40K_PSUP_40K_NA': [4.92e+00, 50], \
 '40K_TANK_40K_NA': [9.70e+01, 50], \
-'40K_ROCK_2_40K_NA': [2.23e+06, 1000], \
+'40K_ROCK_2_40K_NA': [1.05e+03, 50], \
+'40K_ROCK_1_40K_NA': [1.05e+03, 50], \
 '40K_ENCAP_40K_NA': [8.784e+01, 50], \
 '40K_LINER_40K_NA': [5.08e+00, 50], \
 '234Pa_PMT_CHAIN_238U_NA': [1.55e+02 * uip, 50], \
@@ -432,11 +437,16 @@ def loadSimulationParameters():
 '214Bi_TANK_CHAIN_238U_NA': [3.20e+01, 50], \
 '210Bi_TANK_CHAIN_238U_NA': [3.20e+01, 50], \
 '210Tl_TANK_CHAIN_238U_NA': [3.20e+01*0.0002, 50], \
-'234Pa_ROCK_2_CHAIN_238U_NA': [3.24e+04, 1000], \
-'214Pb_ROCK_2_CHAIN_238U_NA': [3.24e+04, 1000], \
-'214Bi_ROCK_2_CHAIN_238U_NA': [3.24e+04, 1000], \
-'210Bi_ROCK_2_CHAIN_238U_NA': [3.24e+04, 1000], \
-'210Tl_ROCK_2_CHAIN_238U_NA': [3.24e+04*0.0002, 1000], \
+'234Pa_ROCK_2_CHAIN_238U_NA': [2.19e+05, 50], \
+'214Pb_ROCK_2_CHAIN_238U_NA': [2.19e+05, 50], \
+'214Bi_ROCK_2_CHAIN_238U_NA': [2.19e+05, 50], \
+'210Bi_ROCK_2_CHAIN_238U_NA': [2.19e+05, 50], \
+'210Tl_ROCK_2_CHAIN_238U_NA': [2.19e+05*0.0002, 50], \
+'234Pa_ROCK_1_CHAIN_238U_NA': [2.19e+05, 50], \
+'214Pb_ROCK_1_CHAIN_238U_NA': [2.19e+05, 50], \
+'214Bi_ROCK_1_CHAIN_238U_NA': [2.19e+05, 50], \
+'210Bi_ROCK_1_CHAIN_238U_NA': [2.19e+05, 50], \
+'210Tl_ROCK_1_CHAIN_238U_NA': [2.19e+05*0.0002, 50], \
 '234Pa_LIQUID_CHAIN_238U_NA': [2.99e-2, 50], \
 '214Pb_LIQUID_CHAIN_238U_NA': [2.99e-2, 50], \
 '214Bi_LIQUID_CHAIN_238U_NA': [2.99e-2, 50], \
@@ -468,10 +478,14 @@ def loadSimulationParameters():
 '212Pb_TANK_CHAIN_232Th_NA': [2.50E+01, 50], \
 '212Bi_TANK_CHAIN_232Th_NA': [2.50E+01*0.64, 50], \
 '208Tl_TANK_CHAIN_232Th_NA': [2.50E+01*0.36, 50], \
-'228Ac_ROCK_2_CHAIN_232Th_NA': [3.74e+04, 1000], \
-'212Pb_ROCK_2_CHAIN_232Th_NA': [3.74e+04, 1000], \
-'212Bi_ROCK_2_CHAIN_232Th_NA': [3.74e+04*0.64, 1000], \
-'208Tl_ROCK_2_CHAIN_232Th_NA': [3.74e+04*0.36, 1000], \
+'228Ac_ROCK_2_CHAIN_232Th_NA': [3.38e+04, 50], \
+'212Pb_ROCK_2_CHAIN_232Th_NA': [3.38e+04, 50], \
+'212Bi_ROCK_2_CHAIN_232Th_NA': [3.38e+04*0.64, 50], \
+'208Tl_ROCK_2_CHAIN_232Th_NA': [3.38e+04*0.36, 50], \
+'228Ac_ROCK_1_CHAIN_232Th_NA': [3.38e+04, 50], \
+'212Pb_ROCK_1_CHAIN_232Th_NA': [3.38e+04, 50], \
+'212Bi_ROCK_1_CHAIN_232Th_NA': [3.38e+04*0.64, 50], \
+'208Tl_ROCK_1_CHAIN_232Th_NA': [3.38e+04*0.36, 50], 
 '228Ac_LIQUID_CHAIN_232Th_NA': [2.99e-03, 1], \
 '212Pb_LIQUID_CHAIN_232Th_NA': [2.99e-03, 1], \
 '212Bi_LIQUID_CHAIN_232Th_NA': [2.99e-03*0.64, 1], \
@@ -519,6 +533,11 @@ def loadSimulationParameters():
 '211Pb_ROCK_2_CHAIN_235U_NA': [1.49e+03, 1], \
 '211Bi_ROCK_2_CHAIN_235U_NA': [1.49e+03*0.00270, 1], \
 '207Tl_ROCK_2_CHAIN_235U_NA': [1.49e+03, 1], \
+'231Th_ROCK_1_CHAIN_235U_NA': [1.49e+03, 1], \
+'223Fr_ROCK_1_CHAIN_235U_NA': [1.49e+03*0.0138, 1], \
+'211Pb_ROCK_1_CHAIN_235U_NA': [1.49e+03, 1], \
+'211Bi_ROCK_1_CHAIN_235U_NA': [1.49e+03*0.00270, 1], \
+'207Tl_ROCK_1_CHAIN_235U_NA': [1.49e+03, 1], \
 '231Th_ENCAP_CHAIN_235U_NA': [1.22e+00, 1], \
 '223Fr_ENCAP_CHAIN_235U_NA': [1.22e+00*0.0138, 1], \
 '211Pb_ENCAP_CHAIN_235U_NA': [1.22e+00, 1], \
